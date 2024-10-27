@@ -1,22 +1,23 @@
 using System.ComponentModel.DataAnnotations;
-namespace PropertyApp.Models;
-public class Property
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace PropertyApp.Models
 {
-    public int Id { get; set; }
+    [Table("Properties")]
+    public class Property
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
 
-    [Required]
-    public required string Title { get; set; }
+        public required string Title { get; set; }
 
-    [Required]
-    public required string Address { get; set; }
+        public required string Address { get; set; }
 
-    [Required]
-    [Range(0, double.MaxValue, ErrorMessage = "Price must be a positive number.")]
-    public decimal Price { get; set; }
+        public decimal Price { get; set; }
 
-    [Required]
-    public int Bedrooms { get; set; }
+        public int Bedrooms { get; set; }
 
-    [Required]
-    public int Bathrooms { get; set; }
+        public int Bathrooms { get; set; }
+    }
 }
