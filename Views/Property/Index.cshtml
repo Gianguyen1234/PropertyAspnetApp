@@ -1,0 +1,31 @@
+@model IEnumerable<PropertyApp.Models.Property>
+
+@{
+    ViewData["Title"] = "Properties";
+}
+
+<h2>Properties</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Address</th>
+            <th>Price</th>
+            <th>Bedrooms</th>
+            <th>Bathrooms</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var property in Model)
+        {
+            <tr>
+                <td>@property.Title</td>
+                <td>@property.Address</td>
+                <td>@property.Price:C</td>
+                <td>@property.Bedrooms</td>
+                <td>@property.Bathrooms</td>
+            </tr>
+        }
+    </tbody>
+</table>

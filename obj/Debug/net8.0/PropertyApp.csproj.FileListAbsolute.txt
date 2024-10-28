@@ -141,3 +141,8 @@ G:\asnetmvc\PropertyApp\obj\Debug\net8.0\refint\PropertyApp.dll
 G:\asnetmvc\PropertyApp\obj\Debug\net8.0\PropertyApp.pdb
 G:\asnetmvc\PropertyApp\obj\Debug\net8.0\PropertyApp.genruntimeconfig.cache
 G:\asnetmvc\PropertyApp\obj\Debug\net8.0\ref\PropertyApp.dll
+G:\asnetmvc\PropertyApp\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+G:\asnetmvc\PropertyApp\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+G:\asnetmvc\PropertyApp\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+G:\asnetmvc\PropertyApp\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+G:\asnetmvc\PropertyApp\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
