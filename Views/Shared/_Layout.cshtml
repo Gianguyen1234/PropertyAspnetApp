@@ -8,71 +8,68 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/PropertyApp.styles.css" asp-append-version="true" />
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa; /* Light background for better contrast */
-            margin: 0;
-            padding: 0;
-        }
-
+        /* Custom Navbar Style */
         .navbar-custom {
-            background-color: #28a745; /* Primary color */
-            transition: background-color 0.3s; /* Smooth transition for hover effects */
+            background: linear-gradient(45deg, #007bff, #00c2ff);
+            padding: 1rem;
         }
 
-        .navbar-custom:hover {
-            background-color: #218838; /* Darker shade on hover */
+        .navbar-custom .navbar-brand {
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.5rem;
         }
 
-        .navbar-custom .navbar-brand,
-        .navbar-custom .nav-link {
-            color: white;
-            transition: color 0.3s; /* Smooth transition for hover effects */
+        .navbar-custom .navbar-nav .nav-link {
+            color: #fff;
+            font-size: 1rem;
+            margin-right: 1rem;
         }
 
-        .navbar-custom .nav-link:hover {
-            color: #d4edda; /* Lighten on hover */
+        .navbar-custom .navbar-nav .nav-link:hover {
+            color: #d1ecf1;
         }
 
-        .container {
-            max-width: 1200px; /* Set a max width for the container */
-            margin: auto; /* Center the container */
-        }
-
-        footer {
-            background-color: #343a40; /* Dark footer */
-            color: white; /* White text for footer */
-            padding: 20px 0; /* Padding for footer */
-        }
-
-        footer a {
-            color: #d4d4d4; /* Light footer links */
-        }
-
-        footer a:hover {
-            color: #ffffff; /* Brighten footer links on hover */
-        }
-
-        .search-form {
-            display: flex;
-        }
-
-        .search-form .form-control {
-            border-radius: 0; /* Remove border radius for consistent look */
+        .search-form input[type="search"] {
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
         }
 
         .search-form .btn {
-            border-radius: 0; /* Remove border radius for consistent look */
+            background-color: #00c2ff;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .search-form .btn:hover {
+            background-color: #007bff;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #f8f9fa;
+            padding: 1rem 0;
+        }
+
+        /* Content */
+        main {
+            padding-top: 2rem;
         }
     </style>
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-custom navbar-light border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-lg navbar-custom navbar-light box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PropertyApp</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class='bx bx-home-alt'></i> PropertyApp
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -80,38 +77,47 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index"><i
+                                    class='bx bx-home'></i> Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy"><i
+                                    class='bx bx-shield'></i> Privacy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Property" asp-action="Index">Properties</a>
+                            <a class="nav-link" asp-area="" asp-controller="Property" asp-action="Index"><i
+                                    class='bx bx-buildings'></i> Properties</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                            <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login"><i
+                                    class='bx bx-log-in'></i> Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                            <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register"><i
+                                    class='bx bx-user-plus'></i> Register</a>
                         </li>
                         @if (User.Identity != null && User.Identity.IsAuthenticated)
                         {
                             @if (User.IsInRole("Admin"))
                             {
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="Property" asp-action="Create">Create Property</a>
+                                    <a class="nav-link" asp-area="" asp-controller="Property" asp-action="Create"><i
+                                            class='bx bx-plus'></i> Create Property</a>
                                 </li>
                             }
                             <li class="nav-item">
-                                <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" style="display:inline;">
-                                    <button type="submit" class="nav-link btn btn-link">Logout</button>
+                                <form asp-area="" asp-controller="Account" asp-action="Logout" method="post"
+                                    style="display:inline;">
+                                    <button type="submit" class="nav-link btn btn-link"><i class='bx bx-log-out'></i>
+                                        Logout</button>
                                 </form>
                             </li>
                         }
                     </ul>
-                    <form class="search-form">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-light" type="submit">Search</button>
+                    <form class="search-form d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search properties"
+                            aria-label="Search">
+                        <button class="btn btn-outline-light" type="submit"><i class='bx bx-search'></i> Search</button>
                     </form>
                 </div>
             </div>
@@ -123,7 +129,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="footer text-muted">
         <div class="container text-center">
             &copy; 2024 - PropertyApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
@@ -131,7 +137,6 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 

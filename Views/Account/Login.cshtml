@@ -4,24 +4,82 @@
     ViewData["Title"] = "Login";
 }
 
-<h2>Login</h2>
+<style>
+    /* Centered container and styling */
+    body {
+        background-color: #f4f6f9;
+    }
+    .login-container {
+        max-width: 400px;
+        margin: 5rem auto;
+        padding: 2rem;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .login-container h2 {
+        color: #007bff;
+        text-align: center;
+        font-weight: bold;
+    }
+    .form-label {
+        font-weight: 500;
+        color: #4a4a4a;
+    }
+    .form-control {
+        border-radius: 5px;
+    }
+    /* Button Styling */
+    .btn-login {
+        background: linear-gradient(45deg, #007bff, #00c2ff);
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 0.5rem 1.5rem;
+        width: 100%;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+    .btn-login:hover {
+        background: linear-gradient(45deg, #0056b3, #0099cc);
+    }
+    /* Link Styling */
+    .register-link {
+        display: block;
+        text-align: center;
+        margin-top: 1rem;
+        color: #007bff;
+        font-weight: 500;
+    }
+    .register-link:hover {
+        text-decoration: underline;
+        color: #0056b3;
+    }
+</style>
 
-<form asp-action="Login" method="post">
-    <div class="mb-3">
-        <label asp-for="Email" class="form-label">Email</label>
-        <input asp-for="Email" class="form-control" />
-        <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
-    <div class="mb-3">
-        <label asp-for="Password" class="form-label">Password</label>
-        <input asp-for="Password" class="form-control" type="password" />
-        <span asp-validation-for="Password" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-primary">Login</button>
-</form>
+<div class="login-container">
+    <h2>Login</h2>
+    <form asp-action="Login" method="post">
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label">
+                <i class="bx bx-envelope"></i> Email
+            </label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Password" class="form-label">
+                <i class="bx bx-lock"></i> Password
+            </label>
+            <input asp-for="Password" class="form-control" type="password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-login">Login</button>
+    </form>
 
-<div class="mt-3">
-    <a asp-action="Register">Don't have an account? Register here.</a>
+    <div class="mt-3">
+        <a asp-action="Register" class="register-link">Don't have an account? Register here.</a>
+    </div>
 </div>
 
 @section Scripts {
