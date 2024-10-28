@@ -11,11 +11,13 @@
 <table class="table">
     <thead>
         <tr>
+            <th>Image</th>
             <th>Title</th>
             <th>Address</th>
             <th>Price</th>
             <th>Bedrooms</th>
             <th>Bathrooms</th>
+            <th>Detail Description</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -23,11 +25,22 @@
         @foreach (var property in Model)
         {
             <tr>
+                <td>
+                    @if (!string.IsNullOrEmpty(property.ImageUrl))
+                    {
+                        <img src="@property.ImageUrl" alt="Property Image" style="width:100px; height:auto;" />
+                    }
+                    else
+                    {
+                        <span>No Image</span>
+                    }
+                </td>
                 <td>@property.Title</td>
                 <td>@property.Address</td>
                 <td>@property.Price.ToString("C")</td>
                 <td>@property.Bedrooms</td>
                 <td>@property.Bathrooms</td>
+                <td>@property.DetailDescription</td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@property.Id" class="btn btn-secondary">Edit</a>
                     <form asp-action="Delete" asp-route-id="@property.Id" method="post" style="display:inline;">

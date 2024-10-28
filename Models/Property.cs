@@ -19,5 +19,9 @@ namespace PropertyApp.Models
         public int Bedrooms { get; set; }
 
         public int Bathrooms { get; set; }
+
+        public string? ImageUrl { get; set; } // New field for image URL
+
+        public string? DetailDescription { get; set; } // New field for detail description
     }
 }

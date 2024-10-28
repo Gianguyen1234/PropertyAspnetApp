@@ -33,21 +33,32 @@
         }
 
         .search-form input[type="search"] {
-            border-radius: 20px;
-            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid #ddd;
+            background-color: #f8f9fa;
+            transition: box-shadow 0.3s;
         }
 
-        .search-form .btn {
-            background-color: #00c2ff;
+        .search-form input[type="search"]:focus {
+            box-shadow: 0 0 10px rgba(0, 194, 255, 0.3);
+            outline: none;
+        }
+
+        .search-form .btn-search {
+            background: linear-gradient(135deg, #00c2ff, #007bff);
             color: #fff;
             border: none;
-            padding: 0.5rem 1.5rem;
-            border-radius: 20px;
-            transition: background-color 0.3s;
+            padding: 0.5rem 1.75rem;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .search-form .btn:hover {
-            background-color: #007bff;
+        .search-form .btn-search:hover {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
         }
 
         /* Footer */
@@ -88,14 +99,7 @@
                             <a class="nav-link" asp-area="" asp-controller="Property" asp-action="Index"><i
                                     class='bx bx-buildings'></i> Properties</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login"><i
-                                    class='bx bx-log-in'></i> Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register"><i
-                                    class='bx bx-user-plus'></i> Register</a>
-                        </li>
+                        <!-- Conditional display based on authentication status -->
                         @if (User.Identity != null && User.Identity.IsAuthenticated)
                         {
                             @if (User.IsInRole("Admin"))
@@ -113,11 +117,23 @@
                                 </form>
                             </li>
                         }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Login"><i
+                                        class='bx bx-log-in'></i> Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Register"><i
+                                        class='bx bx-user-plus'></i> Register</a>
+                            </li>
+                        }
                     </ul>
-                    <form class="search-form d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search properties"
-                            aria-label="Search">
-                        <button class="btn btn-outline-light" type="submit"><i class='bx bx-search'></i> Search</button>
+                    <form class="search-form d-flex align-items-center" method="get" asp-controller="Home"
+                        asp-action="Index">
+                        <input class="form-control me-2 shadow-sm" name="keyword" type="search"
+                            placeholder="Search properties" aria-label="Search" />
+                        <button class="btn btn-search" type="submit"><i class='bx bx-search'></i> Search</button>
                     </form>
                 </div>
             </div>

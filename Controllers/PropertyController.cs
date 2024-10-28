@@ -32,10 +32,31 @@ namespace PropertyApp.Controllers
         // POST: Property/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Property property)
+        public async Task<IActionResult> Create(Property property, IFormFile ImageUrl)
         {
             if (ModelState.IsValid)
             {
+                if (ImageUrl != null && ImageUrl.Length > 0)
+                {
+                    // Define the path where you want to save the images
+                    var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+
+                    // Generate a unique file name
+                    var fileName = Guid.NewGuid().ToString() + Path.GetExtension(ImageUrl.FileName);
+
+                    // Combine the path and filename to get the complete file path
+                    var filePath = Path.Combine(uploadPath, fileName);
+
+                    // Save the file to the server
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await ImageUrl.CopyToAsync(stream);
+                    }
+
+                    // Store the relative path in the ImageUrl property
+                    property.ImageUrl = $"/images/{fileName}";
+                }
+
                 _context.Add(property);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -57,7 +78,7 @@ namespace PropertyApp.Controllers
         // POST: Property/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Property property)
+        public async Task<IActionResult> Edit(int id, Property property, IFormFile ImageUrl)
         {
             if (id != property.Id)
             {
@@ -66,19 +87,22 @@ namespace PropertyApp.Controllers
 
             if (ModelState.IsValid)
             {
-                try
+                if (ImageUrl != null && ImageUrl.Length > 0)
                 {
-                    _context.Update(property);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!PropertyExists(property.Id))
+                    var uploadPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+                    var fileName = Guid.NewGuid().ToString() + Path.GetExtension(ImageUrl.FileName);
+                    var filePath = Path.Combine(uploadPath, fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
                     {
-                        return NotFound();
+                        await ImageUrl.CopyToAsync(stream);
                     }
-                    throw;
+
+                    property.ImageUrl = $"/images/{fileName}";
                 }
+
+                _context.Update(property);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(property);
@@ -96,6 +120,18 @@ namespace PropertyApp.Controllers
                 await _context.SaveChangesAsync();
             }
             return RedirectToAction(nameof(Index));
+        }
+
+         // Action for viewing details of a single property
+        public IActionResult Details(int id)
+        {
+            var property = _context.Properties.FirstOrDefault(p => p.Id == id);
+            if (property == null)
+            {
+                return NotFound();
+            }
+
+            return View(property);
         }
 
         private bool PropertyExists(int id)

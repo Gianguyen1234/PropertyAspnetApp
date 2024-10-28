@@ -1,0 +1,31 @@
+@model PropertyApp.Models.Property
+
+@{
+    ViewData["Title"] = "Property Details";
+}
+
+<div class="container mt-5 p-4 border rounded shadow-sm bg-light">
+    <h2 class="text-center mb-4">@Model.Title</h2>
+
+    <div class="card mb-4 shadow-sm">
+        <img src="@Model.ImageUrl" class="card-img-top rounded-top" alt="@Model.Title" style="max-height: 400px; object-fit: cover;">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h3 class="card-title">@Model.Title</h3>
+                <span class="badge bg-primary fs-5 p-2">$@Model.Price</span>
+            </div>
+            <p class="card-text"><strong>Address:</strong> @Model.Address</p>
+            <div class="d-flex mb-3">
+                <p class="me-4"><strong>Bedrooms:</strong> @Model.Bedrooms</p>
+                <p><strong>Bathrooms:</strong> @Model.Bathrooms</p>
+            </div>
+            <p class="card-text"><strong>Description:</strong></p>
+            <p class="card-text">@Model.DetailDescription</p>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center mt-4">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary me-3"><i class="bx bx-edit-alt"></i> Edit</a>
+        <a asp-action="Index" class="btn btn-secondary"><i class="bx bx-arrow-back"></i> Back to List</a>
+    </div>
+</div>

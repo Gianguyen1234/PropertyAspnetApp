@@ -46,3 +46,45 @@ button.accept-policy {
   white-space: nowrap;
   line-height: 60px;
 }
+
+    /* Filter Section Styling */
+    .filter-section {
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .filter-section h5 {
+      font-weight: bold;
+      color: #333;
+  }
+
+  .input-group-text {
+      font-weight: 500;
+      color: #555;
+  }
+
+  /* Property Card Styling */
+  .card {
+      border: none;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+  }
+
+  .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Pagination Styling */
+  .pagination .page-item.active .page-link {
+      background-color: #007bff;
+      border-color: #007bff;
+      color: #fff;
+  }
+  
+  .pagination .page-link {
+      color: #007bff;
+  }
+

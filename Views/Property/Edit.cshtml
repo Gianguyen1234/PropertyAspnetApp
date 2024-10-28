@@ -4,36 +4,55 @@
     ViewData["Title"] = "Edit Property";
 }
 
-<h1>Edit Property</h1>
+<div class="container mt-5 p-4 border rounded shadow-sm bg-light">
+    <h2 class="text-center mb-4">Edit Property</h2>
 
-<form asp-action="Edit">
-    <div class="form-group">
-        <label asp-for="Title" class="control-label"></label>
-        <input asp-for="Title" class="form-control" />
-        <span asp-validation-for="Title" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Address" class="control-label"></label>
-        <input asp-for="Address" class="form-control" />
-        <span asp-validation-for="Address" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Price" class="control-label"></label>
-        <input asp-for="Price" class="form-control" />
-        <span asp-validation-for="Price" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Bedrooms" class="control-label"></label>
-        <input asp-for="Bedrooms" class="form-control" />
-        <span asp-validation-for="Bedrooms" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Bathrooms" class="control-label"></label>
-        <input asp-for="Bathrooms" class="form-control" />
-        <span asp-validation-for="Bathrooms" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Save" class="btn btn-primary" />
-        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
-    </div>
-</form>
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label">Property Title</label>
+            <input asp-for="Title" class="form-control" placeholder="Enter property title" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Address" class="form-label">Address</label>
+            <input asp-for="Address" class="form-control" placeholder="Enter address" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label asp-for="Price" class="form-label">Price ($)</label>
+                <input asp-for="Price" class="form-control" placeholder="Enter price" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label asp-for="Bedrooms" class="form-label">Bedrooms</label>
+                <input asp-for="Bedrooms" class="form-control" placeholder="No. of bedrooms" />
+                <span asp-validation-for="Bedrooms" class="text-danger"></span>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label asp-for="Bathrooms" class="form-label">Bathrooms</label>
+                <input asp-for="Bathrooms" class="form-control" placeholder="No. of bathrooms" />
+                <span asp-validation-for="Bathrooms" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ImageUrl" class="form-label">Property Image</label>
+            <input asp-for="ImageUrl" type="file" class="form-control" />
+            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="DetailDescription" class="form-label">Description</label>
+            <textarea asp-for="DetailDescription" class="form-control" rows="5" placeholder="Enter detailed description of the property"></textarea>
+            <span asp-validation-for="DetailDescription" class="text-danger"></span>
+        </div>
+
+        <div class="d-flex justify-content-center mt-4">
+            <button type="submit" class="btn btn-primary px-4 me-2">Save</button>
+            <a asp-action="Index" class="btn btn-secondary px-4">Back to List</a>
+        </div>
+    </form>
+</div>

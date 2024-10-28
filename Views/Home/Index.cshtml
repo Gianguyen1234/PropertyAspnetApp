@@ -1,8 +1,74 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1 class="text-center mb-4">Latest Properties</h1>
+
+<!-- Search Form (No Changes) -->
+<form class="search-form mb-4" method="get" asp-controller="Home" asp-action="Index">
+    <div class="d-flex align-items-center mb-3">
+        <input class="form-control me-2" name="keyword" type="search" placeholder="Search properties" aria-label="Search" value="@Model.Keyword" />
+        <button class="btn btn-search" type="submit">Search</button>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="filter-section mb-4 p-3 bg-light rounded">
+        <h5 class="mb-3">Filters</h5>
+        
+        <!-- Price Filter -->
+        <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fas fa-dollar-sign"></i> Price</span>
+            <input type="number" class="form-control" name="minPrice" placeholder="Min" value="@Model.MinPrice" />
+            <input type="number" class="form-control" name="maxPrice" placeholder="Max" value="@Model.MaxPrice" />
+        </div>
+        
+        <!-- Bedrooms Filter -->
+        <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fas fa-bed"></i> Bedrooms</span>
+            <input type="number" class="form-control" name="minBedrooms" placeholder="Min" value="@Model.MinBedrooms" />
+            <input type="number" class="form-control" name="maxBedrooms" placeholder="Max" value="@Model.MaxBedrooms" />
+        </div>
+
+        <!-- Bathrooms Filter -->
+        <div class="input-group mb-3">
+            <span class="input-group-text"><i class="fas fa-bath"></i> Bathrooms</span>
+            <input type="number" class="form-control" name="minBathrooms" placeholder="Min" value="@Model.MinBathrooms" />
+            <input type="number" class="form-control" name="maxBathrooms" placeholder="Max" value="@Model.MaxBathrooms" />
+        </div>
+        
+        <!-- Apply Filters Button -->
+        <button class="btn btn-info w-100" type="submit"><i class="fas fa-filter me-1"></i> Apply Filters</button>
+    </div>
+</form>
+
+<!-- Property Cards Display -->
+<div class="row">
+    @foreach (var property in Model.Properties)
+    {
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm border-0">
+                <img src="@property.ImageUrl" class="card-img-top rounded-top" alt="@property.Title" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title">@property.Title</h5>
+                    <p class="card-text text-muted">@property.Address</p>
+                    <p class="card-text"><strong>Price:</strong> @property.Price.ToString("C")</p>
+                    <p class="card-text"><strong>Bedrooms:</strong> @property.Bedrooms</p>
+                    <p class="card-text"><strong>Bathrooms:</strong> @property.Bathrooms</p>
+                    <a asp-controller="Property" asp-action="Details" asp-route-id="@property.Id" class="btn btn-primary w-100 mt-2"><i class="fas fa-info-circle me-1"></i> View Details</a>
+                </div>
+            </div>
+        </div>
+    }
 </div>
+
+<!-- Pagination Controls -->
+<nav>
+    <ul class="pagination justify-content-center">
+        @for (int i = 1; i <= Model.TotalPages; i++)
+        {
+            <li class="page-item @(i == Model.CurrentPage ? "active" : "")">
+                <a class="page-link" asp-action="Index" asp-controller="Home" asp-route-page="@i" asp-route-keyword="@Model.Keyword" asp-route-minPrice="@Model.MinPrice" asp-route-maxPrice="@Model.MaxPrice" asp-route-minBedrooms="@Model.MinBedrooms" asp-route-maxBedrooms="@Model.MaxBedrooms" asp-route-minBathrooms="@Model.MinBathrooms" asp-route-maxBathrooms="@Model.MaxBathrooms">@i</a>
+            </li>
+        }
+    </ul>
+</nav>

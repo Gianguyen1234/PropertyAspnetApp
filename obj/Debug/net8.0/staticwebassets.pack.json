@@ -13,6 +13,22 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "G:\\asnetmvc\\PropertyApp\\wwwroot\\images\\599925d9-e281-4f34-bcf9-77097ab02fdb.png",
+      "PackagePath": "staticwebassets\\images\\599925d9-e281-4f34-bcf9-77097ab02fdb.png"
+    },
+    {
+      "Id": "G:\\asnetmvc\\PropertyApp\\wwwroot\\images\\5f1c4404-1625-42bd-a4fd-c2f465900648.png",
+      "PackagePath": "staticwebassets\\images\\5f1c4404-1625-42bd-a4fd-c2f465900648.png"
+    },
+    {
+      "Id": "G:\\asnetmvc\\PropertyApp\\wwwroot\\images\\7de83d4e-9bf4-4fd7-acdf-52350b7c6371.png",
+      "PackagePath": "staticwebassets\\images\\7de83d4e-9bf4-4fd7-acdf-52350b7c6371.png"
+    },
+    {
+      "Id": "G:\\asnetmvc\\PropertyApp\\wwwroot\\images\\b73f4418-b870-4496-af98-19c498326301.png",
+      "PackagePath": "staticwebassets\\images\\b73f4418-b870-4496-af98-19c498326301.png"
+    },
+    {
       "Id": "G:\\asnetmvc\\PropertyApp\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
