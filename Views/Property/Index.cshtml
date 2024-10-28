@@ -4,9 +4,11 @@
     ViewData["Title"] = "Properties";
 }
 
-<h2>Properties</h2>
+<h1>Properties</h1>
 
-<table class="table table-striped">
+<a asp-action="Create" class="btn btn-primary">Create New Property</a>
+
+<table class="table">
     <thead>
         <tr>
             <th>Title</th>
@@ -14,6 +16,7 @@
             <th>Price</th>
             <th>Bedrooms</th>
             <th>Bathrooms</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -22,9 +25,15 @@
             <tr>
                 <td>@property.Title</td>
                 <td>@property.Address</td>
-                <td>@property.Price:C</td>
+                <td>@property.Price.ToString("C")</td>
                 <td>@property.Bedrooms</td>
                 <td>@property.Bathrooms</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@property.Id" class="btn btn-secondary">Edit</a>
+                    <form asp-action="Delete" asp-route-id="@property.Id" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
             </tr>
         }
     </tbody>
