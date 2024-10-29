@@ -102,6 +102,10 @@
                         <!-- Conditional display based on authentication status -->
                         @if (User.Identity != null && User.Identity.IsAuthenticated)
                         {
+                            <li class="nav-item">
+                                <!-- Display the user’s name for any logged-in user -->
+                                <span class="navbar-text">Welcome, @User.Identity.Name!</span>
+                            </li>
                             @if (User.IsInRole("Admin"))
                             {
                                 <li class="nav-item">
