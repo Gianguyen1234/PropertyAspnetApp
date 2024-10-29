@@ -25,7 +25,15 @@
     </div>
 
     <div class="d-flex justify-content-center mt-4">
-        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary me-3"><i class="bx bx-edit-alt"></i> Edit</a>
-        <a asp-action="Index" class="btn btn-secondary"><i class="bx bx-arrow-back"></i> Back to List</a>
+        <!-- Only display the Edit button if the user is an Admin -->
+        @if (User.IsInRole("Admin"))
+        {
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary me-3">
+                <i class="bx bx-edit-alt"></i> Edit
+            </a>
+        }
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="bx bx-arrow-back"></i> Back to List
+        </a>
     </div>
 </div>

@@ -88,3 +88,33 @@ button.accept-policy[b-s2ag2ry68l] {
       color: #007bff;
   }
 
+  /* Enhanced User Welcome Styles */
+.user-welcome-container[b-s2ag2ry68l] {
+  display: flex;
+  align-items: center;
+}
+
+.user-welcome[b-s2ag2ry68l] {
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #00c2ff, #007bff);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.user-welcome i[b-s2ag2ry68l] {
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.user-welcome:hover[b-s2ag2ry68l] {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+

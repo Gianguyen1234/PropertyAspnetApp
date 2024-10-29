@@ -6,7 +6,11 @@
 
 <h1>Properties</h1>
 
-<a asp-action="Create" class="btn btn-primary">Create New Property</a>
+<!-- Only show the Create button if the user is an Admin -->
+@if (User.IsInRole("Admin"))
+{
+    <a asp-action="Create" class="btn btn-primary mb-3">Create New Property</a>
+}
 
 <table class="table">
     <thead>
@@ -18,7 +22,11 @@
             <th>Bedrooms</th>
             <th>Bathrooms</th>
             <th>Detail Description</th>
-            <th>Actions</th>
+            <!-- Only show Actions header if user is Admin -->
+            @if (User.IsInRole("Admin"))
+            {
+                <th>Actions</th>
+            }
         </tr>
     </thead>
     <tbody>
@@ -41,12 +49,17 @@
                 <td>@property.Bedrooms</td>
                 <td>@property.Bathrooms</td>
                 <td>@property.DetailDescription</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@property.Id" class="btn btn-secondary">Edit</a>
-                    <form asp-action="Delete" asp-route-id="@property.Id" method="post" style="display:inline;">
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </td>
+
+                <!-- Only show Edit and Delete buttons if the user is an Admin -->
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@property.Id" class="btn btn-secondary me-2">Edit</a>
+                        <form asp-action="Delete" asp-route-id="@property.Id" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                }
             </tr>
         }
     </tbody>
