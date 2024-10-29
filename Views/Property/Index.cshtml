@@ -56,8 +56,9 @@
                     <td>
                         <a asp-action="Edit" asp-route-id="@property.Id" class="btn btn-secondary me-2">Edit</a>
                         <form asp-action="Delete" asp-route-id="@property.Id" method="post" style="display:inline;">
-                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirmDelete();">Delete</button>
                         </form>
+
                     </td>
                 }
             </tr>

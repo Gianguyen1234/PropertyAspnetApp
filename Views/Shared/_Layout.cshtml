@@ -109,6 +109,11 @@
                                     <a class="nav-link" asp-area="" asp-controller="Property" asp-action="Create"><i
                                             class='bx bx-plus'></i> Create Property</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Dashboard">
+                                        <i class='bx bx-cog'></i> Admin Dashboard
+                                    </a>
+                                </li>
                             }
                             <li class="nav-item">
                                 <form asp-area="" asp-controller="Account" asp-action="Logout" method="post"
@@ -162,6 +167,12 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        function confirmDelete() {
+            return confirm('Are you sure you want to delete this property?');
+        }
+    </script>
+
 
     @await RenderSectionAsync("Scripts", required: false)
     @section Scripts {

@@ -18,6 +18,12 @@ namespace PropertyApp.Controllers
             _roleManager = roleManager; // Initialize the role manager
         }
 
+           public IActionResult Dashboard()
+        {
+           
+            return View();
+        }
+
 
         [HttpGet]
         public IActionResult Register()

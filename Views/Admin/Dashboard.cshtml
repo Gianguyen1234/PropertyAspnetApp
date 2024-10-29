@@ -2,49 +2,150 @@
     ViewData["Title"] = "Admin Dashboard";
 }
 
-<h1>@ViewData["Title"]</h1>
+<h1 class="dashboard-title">@ViewData["Title"]</h1>
 
-<div class="container">
-    <h2>Welcome, Admin!</h2>
-    <p>This is your dashboard where you can manage properties, users, and other settings.</p>
+<div class="container dashboard-container">
+    <h2 class="welcome-message">Welcome, Admin!</h2>
+    <p class="dashboard-intro">This is your dashboard where you can manage properties, users, and other settings.</p>
 
     <div class="row">
         <div class="col-md-4">
-            <div class="card mb-4">
+            <div class="card dashboard-card total-properties">
                 <div class="card-header">
-                    Total Properties
+                    <i class="bx bx-buildings card-icon"></i> Total Properties
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">120</h5>
                     <p class="card-text">Total properties listed in the system.</p>
-                    <a asp-controller="Property" asp-action="Index" class="btn btn-primary">View Properties</a>
+                    <a asp-controller="Property" asp-action="Index" class="btn btn-light">View Properties</a>
                 </div>
             </div>
         </div>
 
         <div class="col-md-4">
-            <div class="card mb-4">
+            <div class="card dashboard-card total-users">
                 <div class="card-header">
-                    Total Users
+                    <i class="bx bx-user card-icon"></i> Total Users
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">50</h5>
                     <p class="card-text">Total users registered in the system.</p>
-                    <a asp-controller="User" asp-action="Index" class="btn btn-primary">View Users</a>
+                    <a asp-controller="User" asp-action="Index" class="btn btn-light">View Users</a>
                 </div>
             </div>
         </div>
 
         <div class="col-md-4">
-            <div class="card mb-4">
+            <div class="card dashboard-card recent-activities">
                 <div class="card-header">
-                    Recent Activities
+                    <i class="bx bx-history card-icon"></i> Recent Activities
                 </div>
                 <div class="card-body">
                     <p class="card-text">Check the logs for recent activities in the system.</p>
-                    <a asp-controller="Activity" asp-action="Index" class="btn btn-primary">View Logs</a>
+                    <a asp-controller="Activity" asp-action="Index" class="btn btn-light">View Logs</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<style>
+    /* Dashboard Styles */
+.dashboard-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.dashboard-container {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-message {
+    color: #333;
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.dashboard-intro {
+    text-align: center;
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.dashboard-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    padding: 1rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.total-properties .card-header {
+    background-color: #17a2b8;
+}
+
+.total-users .card-header {
+    background-color: #28a745;
+}
+
+.recent-activities .card-header {
+    background-color: #ffc107;
+}
+
+.card-icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.card-body {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.card-text {
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.btn-light {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 20px;
+    padding: 0.5rem 1.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-light:hover {
+    background-color: #0056b3;
+}
+
+</style>
